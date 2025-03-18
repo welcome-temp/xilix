@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Xilix collection focuses on, bringing textiie and clothing fashion design to live by making these fashion designs for accessible to people, we also sell cloths and clothing materials">
+        <meta name="author" content="welcome-template">
+
+
+        <title>xilix collection</title>
+         <!-- fevicon -->
+      <link rel="icon" href="pics/xilix1.jpeg" type="image/gif" />
+
+      <link rel="apple-touch-icon" href="pics/xilix1.jpeg" />
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/slick.css"/>
+
+        <link href="css/tooplate-little-fashion.css" rel="stylesheet">
+
+
+        <style>
+            .popup-container {
+                color: #f2a867;
+                position: fixed;
+                width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: flex; align-items: center; justify-content: center;
+            }
+            .popup-content {
+                color: #f2a867;
+                background: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                border-radius: 8px;
+                text-align: center;
+                width: 450px;
+            }
+            .close-btn {
+                position: absolute;
+                top: 10px; right: 15px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            input{
+                width: 300px;
+                border-radius: 10px;
+                padding: 10px;
+            }
+
+
+            
+
+            </style>
+            
+
+    </head>
+    
+    <body>
+<!--
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+    -->  
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+                        <strong><span>Xilix</span> Collection </strong>
+                    </a>
+
+                    <div class="d-lg-none">
+                        <a class="bi-person custom-icon me-3"></a>
+
+                        <a class="bi-bag custom-icon"></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Fashion</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">Story</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="d-none d-lg-block">
+                            <a id="logs-btn" style="cursor: pointer;" class="bi-person custom-icon me-3"></a>
+
+                            <a id="favorite-btn" style="cursor: pointer;" class="bi-bag custom-icon"></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+<!-- Favorite List Dropdown -->
+<div id="favorite-dropdown" style="position: absolute; top: 50px; right: 10px; background: white; 
+    border: 1px solid #ddd; width: 300px; max-height: 400px; overflow-y: auto; display: none; z-index: 1000;">
+    <h4 class="p-2 text-center">Your Favorites</h4>
+    <div id="favorite-container" class="p-2"></div>
+</div>
+
+
+<!-- Signup & Login Pop-up Forms -->
+<div id="auth-popup" class="popup-container" style="display:none ;">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeAuthPopup()">&times;</span>
+        
+        <div id="signup-form">
+            <h2 style=" color: #f2a867; ">Sign Up</h2>
+            <br>  <input type="text" id="signup-name" placeholder="Full Name" required>
+      <br>     <br> <input type="email" id="signup-email" placeholder="Email" required>
+      <br>  <br><input type="password" id="signup-password" placeholder="Password" required>
+      <br>  <br><button style=" width: 300px; border-radius: 10px; padding: 10px; background-color: #f2a867;  color: white; " onclick="signup()">Sign Up</button>
+            <p style=" color: #f2a867; ">Already have an account? <a href="#" onclick="toggleAuthForm('login')">Log in</a></p>
+        </div>
+        
+        <div id="login-form" style="display: none;">
+            <h2 style=" color: #f2a867; ">Login</h2>
+            <br> <input type="email" id="login-email" placeholder="Email" required>
+            <br> <input type="password" id="login-password" placeholder="Enter your email password" required>
+            <br><br><button style=" width: 300px; border-radius: 10px; padding: 10px; background-color: #f2a867;  color: white;" onclick="sendLoginRequest()">login</button>
+            <br><input type="text" id="login-code" placeholder="Enter Code" style="display:none;" required>
+            <br><br><button  onclick="login()" id="login-btn" style=" width: 300px; border-radius: 10px; padding: 10px; background-color: #f2a867;  color: white;  display:none;">Login</button>
+            <br>  <p style=" color: #f2a867; ">Don't have an account? <a href="#" onclick="toggleAuthForm('signup')">Sign up</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Signup & Login confirm -->
+<div id="email-popup" class="popup-container" style="display:none ;">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeEmailPopup()">&times;</span>
+        <strong> An email has been sent to you, please verify your email to continue </strong>
+    </div>
+</div>
+
+<!-- users details  -->
+<div id="logsdropdown" class="popup-container" style="display:none ;">
+    <div class="popup-content">
+        <strong> 
+            <p> name:</p>
+            <p> Email:</p>
+        </strong>
+    </div>
+</div>
+
+
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-12 text-center">
+                <h2 class="mb-5">Featured Designs</h2>
+            </div>
+
+            <!-- Error Message Popup -->
+<div id="error-popup" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%);
+background-color: red; color: white; padding: 10px 20px; border-radius: 5px; z-index: 2000;">
+<span id="error-message"></span>
+</div>
+            
+        <div id="clothes-container" class="row">
+            <!-- fashions will be dynamically loaded here -->
+
+        </div>
+
+
+
+        
+   
+        <div id="viewMode" class="mode" style=" display: none; position: fixed;  width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 999; ">
+          <strong>long</strong>
+            <div style="background-color: rgb(247, 249, 227); padding: 20px; border-radius: 20px; position: fixed; height: 400px; width: 90%; max-width: 1500px; justify-content: center; align-items: center; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <span id="close-modal" style="    margin-top: -100%; margin-left: 90%;
+                padding: 10px 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;">&times;</span>
+                <h3 id="mod-name"  style=" left: 500px;"></h3>
+                <img id="mod-img" src="" alt="Design Image" style="width:50%; left: -100%;">
+                
+                <p id="mod-description" style=" font-weight: 300; font-size: 30px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: whitesmoke; left: -50%;"></p>
+             <br><br><br>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-10 me-auto mb-4">
+                <h4 class="text-white mb-3"><a href="index.html">Xilix</a>  Collection</h4>
+                <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2025 <strong>Little Fashion</strong></p>
+                <br>
+                <p class="copyright-text">Designed by <a href="https://www.welcome-template.com" target="_blank">welcome-template</a></p>
+            </div>
+
+            <div class="col-lg-5 col-8">
+                <h5 class="text-white mb-3">Useful links</h5>
+
+                <ul class="footer-menu d-flex flex-wrap">
+                    <li class="footer-menu-item"><a href="about.html" class="footer-menu-link">Our Story</a></li>
+
+                    <li class="footer-menu-item"><a href="products.html" class="footer-menu-link">Products</a></li>
+
+                    <li class="footer-menu-item"><a href="about.html#privacy" class="footer-menu-link">Privacy policy</a></li>
+
+                    <li class="footer-menu-item"><a href="about.html#faqs" class="footer-menu-link">FAQs</a></li>
+
+                    <li class="footer-menu-item"><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-4">
+                <h5 class="text-white mb-3">Our handle</h5>
+
+                <ul class="social-icon">
+
+                    <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link bi-youtube"></a></li>
+
+                    <li><a href="https://www.whatsapp.com" target="_blank" class="social-icon-link bi-whatsapp"></a></li>
+
+                    <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link bi-instagram"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/Headroom.js"></script>
+<script src="js/jQuery.headroom.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
